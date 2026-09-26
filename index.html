@@ -1,0 +1,2643 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta name="theme-color" content="#ffffff">
+
+<meta name="description"
+      content="Des Histoires & Des Arts — Vivez Angers autrement.">
+
+<link rel="manifest" href="manifest.json">
+
+<title>Des Histoires & Des Arts</title>
+
+<style>
+
+/* ==========================================================
+   DES HISTOIRES & DES ARTS
+   APPLICATION PWA
+   ========================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #111;
+}
+
+/* ==========================================================
+   APPLICATION
+   ========================================================== */
+
+#dha-app {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background: #fff;
+    color: #111;
+    overflow: hidden;
+    position: relative;
+}
+
+.dha-page {
+    display: none;
+    min-height: 100vh;
+    padding-bottom: 90px;
+}
+
+.dha-page.active {
+    display: block;
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.dha-header {
+    height: 66px;
+    padding: 0 20px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.dha-header-number {
+    color: #999;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.dha-logo {
+    color: #111;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.dha-header-city {
+    color: #999;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================
+   TYPOGRAPHIE
+   ========================================================== */
+
+.dha-kicker {
+    color: #777;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    line-height: 1.7;
+}
+
+.dha-rule {
+    width: 60px;
+    height: 1px;
+    margin: 32px 0 25px;
+    background: #111;
+}
+
+.dha-text {
+    color: #444;
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+/* ==========================================================
+   BOUTONS
+   ========================================================== */
+
+.dha-button {
+    width: 100%;
+    min-height: 54px;
+    margin-top: 30px;
+    padding: 15px 18px;
+    border: 1px solid #111;
+    background: #fff;
+    color: #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+.dha-button:hover {
+    background: #111;
+    color: #fff;
+}
+
+.dha-button-arrow {
+    font-size: 18px;
+}
+
+/* ==========================================================
+   ACCUEIL
+   ========================================================== */
+
+.dha-home {
+    padding: 70px 25px 45px;
+}
+
+.dha-home h1 {
+    margin: 25px 0 0;
+    font-size: 55px;
+    line-height: .9;
+    font-weight: 300;
+    letter-spacing: -4px;
+}
+
+/* ==========================================================
+   MENU
+   ========================================================== */
+
+.dha-menu-page {
+    padding: 50px 25px;
+}
+
+.dha-menu-title {
+    margin-top: 15px;
+    font-size: 52px;
+    line-height: .92;
+    font-weight: 300;
+    letter-spacing: -4px;
+}
+
+.dha-menu-list {
+    margin-top: 45px;
+    border-top: 1px solid #ddd;
+}
+
+.dha-menu-item {
+    width: 100%;
+    min-height: 70px;
+    padding: 18px 0;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dha-menu-item-main {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dha-menu-number {
+    color: #aaa;
+    font-size: 7px;
+    letter-spacing: 2px;
+}
+
+.dha-menu-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.dha-menu-arrow {
+    font-size: 17px;
+}
+
+/* ==========================================================
+   CONTENU
+   ========================================================== */
+
+.dha-content {
+    padding: 55px 25px 40px;
+}
+
+.dha-big-title {
+    margin: 20px 0 0;
+    font-size: 48px;
+    line-height: .93;
+    font-weight: 300;
+    letter-spacing: -3px;
+}
+
+/* ==========================================================
+   OFFRES
+   ========================================================== */
+
+.dha-offer {
+    margin-top: 25px;
+    padding: 28px 0;
+    border-top: 1px solid #ddd;
+}
+
+.dha-offer:last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+.dha-offer-number {
+    color: #999;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.dha-offer h3 {
+    margin: 12px 0 0;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+}
+
+.dha-offer p {
+    color: #555;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.dha-offer-button {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 14px 17px;
+    border: 1px solid #111;
+    background: #fff;
+    color: #111;
+    text-decoration: none;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+/* ==========================================================
+   TARIF
+   ========================================================== */
+
+.dha-offer-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 25px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.dha-meta-item {
+    min-height: 78px;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid #ddd;
+}
+
+.dha-meta-item:last-child {
+    border-right: 0;
+}
+
+.dha-meta-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #999;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.dha-meta-item strong {
+    display: block;
+    color: #111;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.45;
+}
+
+/* ==========================================================
+   STATISTIQUES
+   ========================================================== */
+
+.dha-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 25px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.dha-stat {
+    padding: 18px 3px;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+
+.dha-stat:last-child {
+    border-right: 0;
+}
+
+.dha-stat strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.dha-stat span {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+    font-size: 6px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================
+   CONTACT
+   ========================================================== */
+
+.dha-contact-list {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+}
+
+.dha-contact-item {
+    padding: 25px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.dha-contact-label {
+    color: #888;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.dha-contact-value {
+    display: block;
+    margin-top: 10px;
+    color: #111;
+    font-size: 14px;
+    line-height: 1.7;
+    text-decoration: none;
+}
+
+.dha-contact-button {
+    display: block;
+    width: 100%;
+    margin-top: 13px;
+    padding: 13px 15px;
+    border: 1px solid #111;
+    background: #fff;
+    color: #111;
+    text-align: center;
+    text-decoration: none;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================
+   SAVEURS D'ANGERS
+   ========================================================== */
+
+.dha-saveurs-hero {
+    padding: 55px 25px 30px;
+}
+
+.dha-saveurs-title {
+    margin-top: 20px;
+    font-size: 51px;
+    line-height: .9;
+    font-weight: 300;
+    letter-spacing: -4px;
+}
+
+.dha-saveurs-intro {
+    margin-top: 30px;
+    color: #444;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.dha-saveurs-price {
+    margin-top: 35px;
+    font-size: 34px;
+    font-weight: 300;
+    letter-spacing: -1px;
+}
+
+.dha-saveurs-price span {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+/* ==========================================================
+   MYSTÈRE
+   ========================================================== */
+
+.dha-mystery-intro {
+    padding: 55px 25px 35px;
+}
+
+.dha-mystery-title {
+    margin-top: 20px;
+    font-size: 51px;
+    line-height: .9;
+    font-weight: 300;
+    letter-spacing: -4px;
+}
+
+/* ==========================================================
+   QUESTIONS
+   ========================================================== */
+
+.dha-question {
+    padding: 55px 25px;
+}
+
+.dha-question-number {
+    color: #999;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.dha-question h2 {
+    margin-top: 20px;
+    font-size: 32px;
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: -1px;
+}
+
+.dha-answer {
+    width: 100%;
+    margin-top: 12px;
+    padding: 17px;
+    border: 1px solid #ddd;
+    background: #fff;
+    text-align: left;
+    color: #111;
+    font-size: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.dha-answer:hover {
+    border-color: #111;
+    background: #f8f8f8;
+}
+
+.dha-game-feedback {
+    display: none;
+    margin-top: 25px;
+    padding: 18px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    color: #444;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* ==========================================================
+   CARTE
+   ========================================================== */
+
+.dha-map {
+    position: relative;
+    height: 270px;
+    overflow: hidden;
+    background: #f3f3f3;
+    border-top: 1px solid #ddd;
+}
+
+.dha-map-title {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    z-index: 10;
+    color: #999;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.dha-river {
+    position: absolute;
+    width: 150%;
+    height: 40px;
+    top: 125px;
+    left: -25%;
+    background: #fff;
+    transform: rotate(-8deg);
+}
+
+.dha-road {
+    position: absolute;
+    height: 10px;
+    width: 130%;
+    left: -15%;
+    background: #fff;
+}
+
+.dha-road.r1 {
+    top: 55px;
+    transform: rotate(28deg);
+}
+
+.dha-road.r2 {
+    top: 210px;
+    transform: rotate(-25deg);
+}
+
+.dha-road.r3 {
+    top: 110px;
+    transform: rotate(72deg);
+}
+
+.dha-marker {
+    position: absolute;
+    z-index: 5;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #111;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+/* ==========================================================
+   NAVIGATION
+   ========================================================== */
+
+.dha-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    height: 70px;
+    z-index: 999999;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.dha-bottom-nav button {
+    border: 0;
+    background: #fff;
+    color: #777;
+    cursor: pointer;
+    font-size: 6px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.dha-bottom-nav span {
+    display: block;
+    margin-bottom: 5px;
+    color: #aaa;
+    font-size: 8px;
+}
+
+/* ==========================================================
+   BOUTON INSTALLATION
+   ========================================================== */
+
+#dha-install {
+    position: fixed;
+    left: 50%;
+    bottom: 82px;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    max-width: 450px;
+    z-index: 1000000;
+
+    display: none;
+
+    padding: 15px 18px;
+    border: 1px solid #111;
+    background: #111;
+    color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:380px) {
+
+    .dha-home h1,
+    .dha-mystery-title,
+    .dha-saveurs-title {
+        font-size: 47px;
+    }
+
+    .dha-big-title {
+        font-size: 43px;
+    }
+
+    .dha-offer-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .dha-meta-item {
+        border-right: 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .dha-meta-item:last-child {
+        border-bottom: 0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="dha-app">
+
+<!-- ======================================================
+     ACCUEIL
+     ====================================================== -->
+
+<section class="dha-page active" id="dha-home">
+
+<header class="dha-header">
+<span class="dha-header-number">01</span>
+<span class="dha-logo">DES HISTOIRES &amp; DES ARTS</span>
+<span class="dha-header-city">ANGERS</span>
+</header>
+
+<div class="dha-home">
+
+<div class="dha-kicker">
+DES HISTOIRES &amp; DES ARTS
+</div>
+
+<h1>
+Vivez Angers<br>
+autrement
+</h1>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text">
+Visites, gastronomie, découvertes, jeux et expériences numériques vous invitent à vivre Angers autrement.
+</p>
+
+<button class="dha-button"
+        onclick="DHA.open('menu')">
+
+<span>
+DÉCOUVRIR L'APPLICATION
+</span>
+
+<span class="dha-button-arrow">
+→
+</span>
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     MENU
+     ====================================================== -->
+
+<section class="dha-page" id="dha-menu">
+
+<header class="dha-header">
+<span class="dha-header-number">02</span>
+<span class="dha-logo">MENU</span>
+<span class="dha-header-city">DHA</span>
+</header>
+
+<div class="dha-menu-page">
+
+<div class="dha-kicker">
+DES HISTOIRES &amp; DES ARTS
+</div>
+
+<div class="dha-menu-title">
+Explorer.
+</div>
+
+<div class="dha-menu-list">
+
+<button class="dha-menu-item"
+onclick="DHA.open('home')">
+
+<span class="dha-menu-item-main">
+<span class="dha-menu-number">01</span>
+<span class="dha-menu-label">ACCUEIL</span>
+</span>
+
+<span class="dha-menu-arrow">→</span>
+
+</button>
+
+
+<button class="dha-menu-item"
+onclick="DHA.open('contact')">
+
+<span class="dha-menu-item-main">
+<span class="dha-menu-number">02</span>
+<span class="dha-menu-label">CONTACT</span>
+</span>
+
+<span class="dha-menu-arrow">→</span>
+
+</button>
+
+
+<button class="dha-menu-item"
+onclick="DHA.open('esprit-curieux')">
+
+<span class="dha-menu-item-main">
+<span class="dha-menu-number">03</span>
+<span class="dha-menu-label">ESPRIT CURIEUX</span>
+</span>
+
+<span class="dha-menu-arrow">→</span>
+
+</button>
+
+
+<button class="dha-menu-item"
+onclick="DHA.open('gourmet')">
+
+<span class="dha-menu-item-main">
+<span class="dha-menu-number">04</span>
+<span class="dha-menu-label">INSTANT GOURMET</span>
+</span>
+
+<span class="dha-menu-arrow">→</span>
+
+</button>
+
+
+<button class="dha-menu-item"
+onclick="DHA.open('activites')">
+
+<span class="dha-menu-item-main">
+<span class="dha-menu-number">05</span>
+<span class="dha-menu-label">MOMENTS RÉCRÉATIFS</span>
+</span>
+
+<span class="dha-menu-arrow">→</span>
+
+</button>
+
+
+<button class="dha-menu-item"
+onclick="DHA.open('revez-loin')">
+
+<span class="dha-menu-item-main">
+<span class="dha-menu-number">06</span>
+<span class="dha-menu-label">RÊVEZ LOIN</span>
+</span>
+
+<span class="dha-menu-arrow">→</span>
+
+</button>
+
+
+<button class="dha-menu-item"
+onclick="DHA.open('visites')">
+
+<span class="dha-menu-item-main">
+<span class="dha-menu-number">07</span>
+<span class="dha-menu-label">VISITES &amp; CO</span>
+</span>
+
+<span class="dha-menu-arrow">→</span>
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     CONTACT
+     ====================================================== -->
+
+<section class="dha-page" id="dha-contact">
+
+<header class="dha-header">
+<span class="dha-header-number">03</span>
+<span class="dha-logo">CONTACT</span>
+<span class="dha-header-city">ANGERS</span>
+</header>
+
+<div class="dha-content">
+
+<div class="dha-kicker">
+DES HISTOIRES &amp; DES ARTS
+</div>
+
+<div class="dha-big-title">
+Parlons<br>
+ensemble.
+</div>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text">
+Une question, une réservation ou un projet ?
+Retrouvez ici toutes les informations pour nous contacter.
+</p>
+
+<div class="dha-contact-list">
+
+<div class="dha-contact-item">
+
+<div class="dha-contact-label">
+ADRESSE
+</div>
+
+<span class="dha-contact-value">
+86 avenue René Gasnier<br>
+49000 Angers<br>
+France
+</span>
+
+<a class="dha-contact-button"
+href="https://www.google.com/maps/search/?api=1&query=86%20avenue%20Ren%C3%A9%20Gasnier%2C%2049000%20Angers%2C%20France"
+target="_blank">
+
+OUVRIR L'ITINÉRAIRE ↗
+
+</a>
+
+</div>
+
+
+<div class="dha-contact-item">
+
+<div class="dha-contact-label">
+EMAIL
+</div>
+
+<a class="dha-contact-value"
+href="mailto:florian.bodineau@deshistoiresetdesarts.fr">
+
+florian.bodineau@deshistoiresetdesarts.fr
+
+</a>
+
+</div>
+
+
+<div class="dha-contact-item">
+
+<div class="dha-contact-label">
+TÉLÉPHONE
+</div>
+
+<a class="dha-contact-value"
+href="tel:+33782093304">
+
++33 7 82 09 33 04
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     ESPRIT CURIEUX
+     ====================================================== -->
+
+<section class="dha-page" id="dha-esprit-curieux">
+
+<header class="dha-header">
+<span class="dha-header-number">04</span>
+<span class="dha-logo">ESPRIT CURIEUX</span>
+<span class="dha-header-city">DHA</span>
+</header>
+
+<div class="dha-content">
+
+<div class="dha-kicker">
+CONTENUS PÉDAGOGIQUES &amp; RESSOURCES NUMÉRIQUES
+</div>
+
+<div class="dha-big-title">
+Esprit<br>
+curieux.
+</div>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text">
+Un espace pour apprendre, approfondir et prolonger les découvertes de Des Histoires &amp; Des Arts.
+</p>
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+PROCHAINEMENT
+</div>
+
+<h3>
+Les ressources<br>
+arrivent bientôt.
+</h3>
+
+<p>
+Cet espace accueillera prochainement nos contenus pédagogiques, ressources numériques, documents et supports.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     INSTANT GOURMET
+     ====================================================== -->
+
+<section class="dha-page" id="dha-gourmet">
+
+<header class="dha-header">
+<span class="dha-header-number">05</span>
+<span class="dha-logo">INSTANT GOURMET</span>
+<span class="dha-header-city">ANGERS</span>
+</header>
+
+<div class="dha-content">
+
+<div class="dha-kicker">
+INSTANT GOURMET
+</div>
+
+<div class="dha-big-title">
+Angers<br>
+à déguster.
+</div>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text">
+Deux expériences pour découvrir Angers par les sens, entre gastronomie, culture et jeu.
+</p>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+01 · ESCAPE GAME GUSTATIF
+</div>
+
+<h3>
+Les Saveurs<br>
+Mystérieuses
+</h3>
+
+<p>
+Une enquête gourmande à travers Angers. Retrouvez les lieux, répondez aux questions, découvrez les anecdotes et avancez dans votre parcours.
+</p>
+
+<div class="dha-offer-meta">
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">TARIF</span>
+<strong>À partir de 60 € TTC</strong>
+</div>
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">POUR QUI ?</span>
+<strong>Adultes · familles · groupes</strong>
+</div>
+
+</div>
+
+<div class="dha-stats">
+
+<div class="dha-stat">
+<strong>02H30</strong>
+<span>DURÉE</span>
+</div>
+
+<div class="dha-stat">
+<strong>15</strong>
+<span>QUESTIONS</span>
+</div>
+
+<div class="dha-stat">
+<strong>6</strong>
+<span>ÉTAPES</span>
+</div>
+
+</div>
+
+<button class="dha-offer-button"
+onclick="DHA.open('mystery')">
+
+COMMENCER L'AVENTURE →
+
+</button>
+
+</div>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+02 · BALADE GOURMANDE &amp; CULTURELLE
+</div>
+
+<h3>
+Les Saveurs<br>
+d'Angers
+</h3>
+
+<p>
+Une balade gourmande de 2h30 au cœur du centre historique d’Angers, mêlant patrimoine, terroir et convivialité.
+</p>
+
+<div class="dha-offer-meta">
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">TARIF</span>
+<strong>À partir de 75 € TTC</strong>
+</div>
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">POUR QUI ?</span>
+<strong>Adultes · familles · groupes</strong>
+</div>
+
+</div>
+
+<div class="dha-stats">
+
+<div class="dha-stat">
+<strong>2H30</strong>
+<span>DURÉE</span>
+</div>
+
+<div class="dha-stat">
+<strong>4–10</strong>
+<span>PERSONNES</span>
+</div>
+
+<div class="dha-stat">
+<strong>FR</strong>
+<span>LANGUE</span>
+</div>
+
+</div>
+
+<button class="dha-offer-button"
+onclick="DHA.open('saveurs-angers')">
+
+DÉCOUVRIR L'EXPÉRIENCE →
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     MOMENTS RÉCRÉATIFS
+     ====================================================== -->
+
+<section class="dha-page" id="dha-activites">
+
+<header class="dha-header">
+<span class="dha-header-number">06</span>
+<span class="dha-logo">MOMENTS RÉCRÉATIFS</span>
+<span class="dha-header-city">DHA</span>
+</header>
+
+<div class="dha-content">
+
+<div class="dha-kicker">
+EXPÉRIENCES RÉCRÉATIVES
+</div>
+
+<div class="dha-big-title">
+Jouer.<br>
+Chercher.<br>
+Découvrir.
+</div>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text">
+Des activités récréatives pour partager un moment original autour de la culture et du patrimoine.
+</p>
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+ACTIVITÉS
+</div>
+
+<h3>
+Des expériences<br>
+autrement.
+</h3>
+
+<p>
+Jeux, découvertes et activités pour tous les âges et différents types de groupes.
+</p>
+
+<div class="dha-offer-meta">
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">TARIF</span>
+<strong>À partir de 25 € TTC</strong>
+</div>
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">POUR QUI ?</span>
+<strong>Familles · amis · groupes</strong>
+</div>
+
+</div>
+
+<a class="dha-button"
+href="https://des-histoires-et-des-arts.e-monsite.com/members/connect/"
+target="_blank">
+
+<span>RÉSERVER</span>
+<span class="dha-button-arrow">→</span>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     RÊVEZ LOIN
+     ====================================================== -->
+
+<section class="dha-page" id="dha-revez-loin">
+
+<header class="dha-header">
+<span class="dha-header-number">07</span>
+<span class="dha-logo">RÊVEZ LOIN</span>
+<span class="dha-header-city">DHA</span>
+</header>
+
+<div class="dha-content">
+
+<div class="dha-kicker">
+VISITES VIRTUELLES
+</div>
+
+<div class="dha-big-title">
+Rêvez<br>
+loin.
+</div>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text">
+Découvrez autrement les lieux, les œuvres et les histoires grâce à nos visites virtuelles.
+</p>
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+VISITES VIRTUELLES
+</div>
+
+<h3>
+Des visites<br>
+sans frontières.
+</h3>
+
+<p>
+Depuis chez vous, plongez au cœur d’univers culturels et patrimoniaux grâce à des expériences numériques immersives.
+</p>
+
+<div class="dha-offer-meta">
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">TARIF</span>
+<strong>À partir de 15 € TTC</strong>
+</div>
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">POUR QUI ?</span>
+<strong>Familles · étudiants · enseignants · curieux</strong>
+</div>
+
+</div>
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+BIBLIOTHÈQUE VIDÉO
+</div>
+
+<h3>
+Regardez.<br>
+Explorez.
+</h3>
+
+<p>
+Une bibliothèque de vidéos pour prolonger vos découvertes et voyager depuis chez vous.
+</p>
+
+</div>
+
+<a class="dha-button"
+href="https://des-histoires-et-des-arts.e-monsite.com/members/connect/"
+target="_blank">
+
+<span>RÉSERVER</span>
+<span class="dha-button-arrow">→</span>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     VISITES & CO
+     ====================================================== -->
+
+<section class="dha-page" id="dha-visites">
+
+<header class="dha-header">
+<span class="dha-header-number">08</span>
+<span class="dha-logo">VISITES &amp; CO</span>
+<span class="dha-header-city">ANGERS</span>
+</header>
+
+<div class="dha-content">
+
+<div class="dha-kicker">
+VISITES GUIDÉES
+</div>
+
+<div class="dha-big-title">
+Angers<br>
+autrement.
+</div>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text">
+Partez à la découverte d’Angers accompagné d’un guide et explorez son histoire, son patrimoine, ses quartiers et ses paysages.
+</p>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+01 · VISITE GUIDÉE
+</div>
+
+<h3>
+Découvrez<br>
+Angers
+</h3>
+
+<p>
+Une visite guidée d’une heure au cœur d’Angers pour découvrir la ville autrement.
+</p>
+
+<div class="dha-offer-meta">
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">TARIF</span>
+<strong>À partir de 12,50 € TTC</strong>
+</div>
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">POUR QUI ?</span>
+<strong>Visiteurs · familles · groupes</strong>
+</div>
+
+</div>
+
+<div class="dha-stats">
+
+<div class="dha-stat">
+<strong>1H</strong>
+<span>FORMAT</span>
+</div>
+
+<div class="dha-stat">
+<strong>1,5 KM</strong>
+<span>PARCOURS</span>
+</div>
+
+<div class="dha-stat">
+<strong>10</strong>
+<span>MAX.</span>
+</div>
+
+</div>
+
+<a class="dha-button"
+href="https://des-histoires-et-des-arts.e-monsite.com/members/connect/"
+target="_blank">
+
+<span>RÉSERVER LA VISITE 1H</span>
+<span class="dha-button-arrow">→</span>
+
+</a>
+
+</div>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+02 · GRANDE VISITE
+</div>
+
+<h3>
+La grande<br>
+visite
+</h3>
+
+<p>
+Un parcours de deux heures pour prendre le temps de découvrir les différents visages d’Angers.
+</p>
+
+<div class="dha-offer-meta">
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">TARIF</span>
+<strong>À partir de 12,50 € TTC</strong>
+</div>
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">POUR QUI ?</span>
+<strong>Visiteurs · familles · groupes</strong>
+</div>
+
+</div>
+
+<div class="dha-stats">
+
+<div class="dha-stat">
+<strong>2H</strong>
+<span>FORMAT</span>
+</div>
+
+<div class="dha-stat">
+<strong>3 KM</strong>
+<span>PARCOURS</span>
+</div>
+
+<div class="dha-stat">
+<strong>10</strong>
+<span>MAX.</span>
+</div>
+
+</div>
+
+<a class="dha-button"
+href="https://des-histoires-et-des-arts.e-monsite.com/members/connect/"
+target="_blank">
+
+<span>RÉSERVER LA VISITE 2H</span>
+<span class="dha-button-arrow">→</span>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     SAVEURS D'ANGERS
+     ====================================================== -->
+
+<section class="dha-page" id="dha-saveurs-angers">
+
+<header class="dha-header">
+<span class="dha-header-number">09</span>
+<span class="dha-logo">SAVEURS D'ANGERS</span>
+<span class="dha-header-city">2H30</span>
+</header>
+
+<div class="dha-saveurs-hero">
+
+<div class="dha-kicker">
+BALADE GOURMANDE &amp; CULTURELLE
+</div>
+
+<div class="dha-saveurs-title">
+Les Saveurs<br>
+d’Angers.
+</div>
+
+<div class="dha-rule"></div>
+
+<p class="dha-saveurs-intro">
+Plongez au cœur d’Angers le temps d’une balade gourmande mêlant patrimoine, terroir et convivialité.
+</p>
+
+<p class="dha-saveurs-intro">
+Pendant environ 2h30, laissez-vous guider à travers les rues du centre historique pour découvrir les trésors culinaires de la ville.
+</p>
+
+<div class="dha-saveurs-price">
+À partir de 75 €
+<span>TTC</span>
+</div>
+
+</div>
+
+
+<div class="dha-content">
+
+<div class="dha-offer-meta">
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">TARIF</span>
+<strong>À partir de 75 € TTC</strong>
+</div>
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">POUR QUI ?</span>
+<strong>Adultes · familles · groupes de 4 à 10</strong>
+</div>
+
+</div>
+
+
+<div class="dha-stats">
+
+<div class="dha-stat">
+<strong>2H30</strong>
+<span>DURÉE</span>
+</div>
+
+<div class="dha-stat">
+<strong>4–10</strong>
+<span>PERSONNES</span>
+</div>
+
+<div class="dha-stat">
+<strong>FR</strong>
+<span>LANGUE</span>
+</div>
+
+</div>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+01 · TERROIR
+</div>
+
+<h3>
+Fromages<br>
+locaux
+</h3>
+
+<p>
+Dégustez une sélection de fromages artisanaux emblématiques de la région, accompagnés de leurs histoires et de leurs secrets de fabrication.
+</p>
+
+</div>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+02 · VINS D’ANJOU
+</div>
+
+<h3>
+Deux vins<br>
+du terroir
+</h3>
+
+<p>
+Savourez deux vins issus du terroir angevin : un rouge et un blanc.
+</p>
+
+</div>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+03 · SPÉCIALITÉS SALÉES
+</div>
+
+<h3>
+Les plaisirs<br>
+du Maine-et-Loire
+</h3>
+
+<p>
+Découvrez des spécialités locales : rillettes, pâtés, fouées et autres plaisirs salés.
+</p>
+
+</div>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+04 · DOUCEURS ANGEVINES
+</div>
+
+<h3>
+Une dernière<br>
+note sucrée
+</h3>
+
+<p>
+Terminez la balade avec des douceurs locales : quernons d’ardoise, pâtisseries ou chocolats au Cointreau.
+</p>
+
+</div>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+05 · RENDEZ-VOUS
+</div>
+
+<h3>
+Place du<br>
+Ralliement
+</h3>
+
+<p>
+Le départ de l’expérience se fait au cœur d’Angers, place du Ralliement.
+</p>
+
+<button class="dha-button"
+onclick="DHA.openSaveursMap()">
+
+<span>VOIR LE POINT DE DÉPART</span>
+<span class="dha-button-arrow">↗</span>
+
+</button>
+
+</div>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+06 · OPTIONS
+</div>
+
+<h3>
+Une expérience<br>
+adaptable.
+</h3>
+
+<p>
+Une formule sans alcool est disponible.
+</p>
+
+<p>
+Une version végétarienne peut être proposée sur demande.
+</p>
+
+<p>
+La privatisation est également possible pour les groupes et événements.
+</p>
+
+</div>
+
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+07 · RÉSERVATION
+</div>
+
+<h3>
+Prêt à découvrir<br>
+Angers autrement ?
+</h3>
+
+<p>
+Réservez votre expérience gastronomique et culturelle.
+</p>
+
+<a class="dha-button"
+href="https://des-histoires-et-des-arts.e-monsite.com/members/connect/"
+target="_blank">
+
+<span>RÉSERVER L’EXPÉRIENCE</span>
+<span class="dha-button-arrow">→</span>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     SAVEURS MYSTÉRIEUSES
+     ====================================================== -->
+
+<section class="dha-page" id="dha-mystery">
+
+<header class="dha-header">
+<span class="dha-header-number">10</span>
+<span class="dha-logo">SAVEURS MYSTÉRIEUSES</span>
+<span class="dha-header-city">02H30</span>
+</header>
+
+<div class="dha-mystery-intro">
+
+<div class="dha-kicker">
+ESCAPE GAME GUSTATIF
+</div>
+
+<div class="dha-mystery-title">
+Les Saveurs<br>
+Mystérieuses.
+</div>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text">
+Une enquête gourmande à travers Angers. Cherchez les lieux, observez votre environnement, répondez aux questions et découvrez les anecdotes qui se cachent derrière les saveurs.
+</p>
+
+<div class="dha-offer-meta">
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">TARIF</span>
+<strong>À partir de 60 € TTC</strong>
+</div>
+
+<div class="dha-meta-item">
+<span class="dha-meta-label">POUR QUI ?</span>
+<strong>Adultes · familles · groupes</strong>
+</div>
+
+</div>
+
+<div class="dha-stats">
+
+<div class="dha-stat">
+<strong>02H30</strong>
+<span>DURÉE</span>
+</div>
+
+<div class="dha-stat">
+<strong>15</strong>
+<span>QUESTIONS</span>
+</div>
+
+<div class="dha-stat">
+<strong>6</strong>
+<span>ÉTAPES</span>
+</div>
+
+</div>
+
+<button class="dha-button"
+onclick="DHA.startGame()">
+
+<span>COMMENCER L’AVENTURE</span>
+<span class="dha-button-arrow">→</span>
+
+</button>
+
+</div>
+
+
+<div class="dha-map">
+
+<div class="dha-map-title">
+PARCOURS — ANGERS
+</div>
+
+<div class="dha-river"></div>
+
+<div class="dha-road r1"></div>
+<div class="dha-road r2"></div>
+<div class="dha-road r3"></div>
+
+<div class="dha-marker"
+style="left:47%;top:110px;">
+D
+</div>
+
+<div class="dha-marker"
+style="left:23%;top:55px;">
+1
+</div>
+
+<div class="dha-marker"
+style="left:68%;top:65px;">
+2
+</div>
+
+<div class="dha-marker"
+style="left:27%;top:175px;">
+3
+</div>
+
+<div class="dha-marker"
+style="left:72%;top:180px;">
+4
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     JEU
+     ====================================================== -->
+
+<section class="dha-page" id="dha-question">
+
+<header class="dha-header">
+
+<span class="dha-header-number"
+id="dha-game-step">
+01
+</span>
+
+<span class="dha-logo">
+SAVEURS MYSTÉRIEUSES
+</span>
+
+<span class="dha-header-city"
+id="dha-game-progress">
+01/15
+</span>
+
+</header>
+
+<div class="dha-question">
+
+<div class="dha-question-number"
+id="dha-game-category">
+ÉTAPE 01 · LE DÉPART
+</div>
+
+<h2 id="dha-game-title">
+La première énigme commence.
+</h2>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text"
+id="dha-game-text">
+Préparez-vous à observer, goûter, réfléchir et trouver les indices qui vous permettront de poursuivre l'aventure.
+</p>
+
+<div id="dha-game-answers"></div>
+
+<div class="dha-game-feedback"
+id="dha-game-feedback">
+</div>
+
+<button class="dha-button"
+id="dha-game-next"
+onclick="DHA.nextGameQuestion()"
+style="display:none;">
+
+<span>
+CONTINUER →
+</span>
+
+<span class="dha-button-arrow">
+→
+</span>
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     FIN DU JEU
+     ====================================================== -->
+
+<section class="dha-page" id="dha-game-finish">
+
+<header class="dha-header">
+
+<span class="dha-header-number">
+FIN
+</span>
+
+<span class="dha-logo">
+SAVEURS MYSTÉRIEUSES
+</span>
+
+<span class="dha-header-city">
+15/15
+</span>
+
+</header>
+
+<div class="dha-content">
+
+<div class="dha-kicker">
+AVENTURE TERMINÉE
+</div>
+
+<div class="dha-big-title">
+Bravo.<br>
+Gourmand.
+</div>
+
+<div class="dha-rule"></div>
+
+<p class="dha-text">
+Vous avez parcouru les six étapes des Saveurs Mystérieuses. Les dégustations, les énigmes et les indices vous ont permis de découvrir Angers autrement.
+</p>
+
+<div class="dha-stats">
+
+<div class="dha-stat">
+<strong id="dha-final-score">
+0/15
+</strong>
+<span>POINTS</span>
+</div>
+
+<div class="dha-stat">
+<strong>15</strong>
+<span>QUESTIONS</span>
+</div>
+
+<div class="dha-stat">
+<strong>6</strong>
+<span>ÉTAPES</span>
+</div>
+
+</div>
+
+<div class="dha-offer">
+
+<div class="dha-offer-number">
+MOT-MYSTÈRE
+</div>
+
+<h3>
+ANGERS
+</h3>
+
+<p>
+Bravo pour avoir terminé l’aventure gourmande.
+</p>
+
+</div>
+
+<button class="dha-button"
+onclick="DHA.open('gourmet')">
+
+<span>
+RETOUR À INSTANT GOURMET
+</span>
+
+<span class="dha-button-arrow">
+→
+</span>
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     NAVIGATION
+     ====================================================== -->
+
+<nav class="dha-bottom-nav">
+
+<button onclick="DHA.open('home')">
+<span>01</span>
+ACCUEIL
+</button>
+
+<button onclick="DHA.open('menu')">
+<span>02</span>
+MENU
+</button>
+
+<button onclick="DHA.open('gourmet')">
+<span>03</span>
+GOURMET
+</button>
+
+<button onclick="DHA.open('contact')">
+<span>04</span>
+CONTACT
+</button>
+
+</nav>
+
+</div>
+
+
+<!-- ======================================================
+     BOUTON INSTALLATION PWA
+     ====================================================== -->
+
+<button id="dha-install">
+INSTALLER DES HISTOIRES &amp; DES ARTS
+</button>
+
+
+<script>
+
+/* ==========================================================
+   QUESTIONS DU JEU
+   ========================================================== */
+
+(function(){
+
+"use strict";
+
+var gameQuestions = [
+
+{
+step:1,
+category:"ÉTAPE 01 · LE DÉPART",
+title:"Quel sens allez-vous utiliser le plus aujourd’hui ?",
+text:"Dans cette aventure, vos yeux, votre nez, votre palais et votre curiosité seront vos meilleurs alliés.",
+answers:[
+"La vue uniquement",
+"Le goût uniquement",
+"Tous les sens",
+"Aucun"
+],
+correct:2,
+feedback:"Exact. Les Saveurs Mystérieuses associent observation, dégustation, réflexion et découverte."
+},
+
+{
+step:1,
+category:"ÉTAPE 01 · LE DÉPART",
+title:"Où commence l’aventure ?",
+text:"Un lieu emblématique du centre d’Angers marque le début du parcours.",
+answers:[
+"Place du Ralliement",
+"Place de la République",
+"Place Kennedy",
+"Place Molière"
+],
+correct:0,
+feedback:"Bonne réponse : le départ est prévu place du Ralliement."
+},
+
+{
+step:1,
+category:"ÉTAPE 01 · LE DÉPART",
+title:"Quel est votre objectif ?",
+text:"À chaque étape, un indice vous rapproche de la résolution du mystère.",
+answers:[
+"Courir le plus vite possible",
+"Goûter, observer et résoudre les énigmes",
+"Acheter le plus de produits possible",
+"Photographier uniquement les monuments"
+],
+correct:1,
+feedback:"Exact. Le parcours mêle dégustations, énigmes, défis et découvertes."
+},
+
+{
+step:2,
+category:"ÉTAPE 02 · FROMAGE & MYSTÈRE",
+title:"Comment déguster un fromage à l’aveugle ?",
+text:"Vous ne connaissez pas son nom. Commencez par observer puis utilisez vos sens.",
+answers:[
+"Uniquement en regardant son emballage",
+"En observant, sentant puis goûtant",
+"En demandant immédiatement la réponse",
+"En choisissant au hasard"
+],
+correct:1,
+feedback:"Exact. Une dégustation fait appel à l’observation, aux arômes, à la texture et au goût."
+},
+
+{
+step:2,
+category:"ÉTAPE 02 · FROMAGE & MYSTÈRE",
+title:"Quel élément peut aider à reconnaître un fromage ?",
+text:"Plusieurs indices peuvent être observés pendant la dégustation.",
+answers:[
+"Sa texture",
+"Ses arômes",
+"Sa longueur",
+"Sa texture et ses arômes"
+],
+correct:3,
+feedback:"Bonne réponse. Texture et arômes sont notamment utiles pour décrire un fromage."
+},
+
+{
+step:2,
+category:"ÉTAPE 02 · FROMAGE & MYSTÈRE",
+title:"Quel est le défi de cette étape ?",
+text:"Le fromage devient ici un véritable indice gastronomique.",
+answers:[
+"Deviner ses caractéristiques",
+"Le cuisiner",
+"Le peser",
+"Le conserver"
+],
+correct:0,
+feedback:"Exact. Cette étape repose sur la dégustation et la découverte."
+},
+
+{
+step:3,
+category:"ÉTAPE 03 · DEVINEZ CE VIN",
+title:"Combien de vins sont dégustés ?",
+text:"Deux vins de l’Anjou sont proposés dans le parcours.",
+answers:[
+"Un",
+"Deux",
+"Trois",
+"Quatre"
+],
+correct:1,
+feedback:"Exact : un vin blanc et un vin rouge sont proposés."
+},
+
+{
+step:3,
+category:"ÉTAPE 03 · DEVINEZ CE VIN",
+title:"Que peut-on essayer d’identifier ?",
+text:"Le jeu vous invite à mettre vos sens à contribution.",
+answers:[
+"Les arômes",
+"Les cépages",
+"Un accord avec un fromage",
+"Les trois"
+],
+correct:3,
+feedback:"Bonne réponse. Les arômes, les cépages et les accords peuvent devenir des indices."
+},
+
+{
+step:3,
+category:"ÉTAPE 03 · DEVINEZ CE VIN",
+title:"Quel est le meilleur réflexe ?",
+text:"Prenez quelques secondes pour observer et sentir avant de goûter.",
+answers:[
+"Répondre immédiatement",
+"Observer et sentir",
+"Choisir au hasard",
+"Attendre la réponse"
+],
+correct:1,
+feedback:"Exact. Prenez le temps d’observer, sentir puis goûter."
+},
+
+{
+step:4,
+category:"ÉTAPE 04 · PAUSE SALÉE",
+title:"Quelle spécialité peut faire partie de la dégustation ?",
+text:"Cette étape vous réserve une spécialité salée angevine.",
+answers:[
+"Une fouée",
+"Une pizza",
+"Un sushi",
+"Un hamburger"
+],
+correct:0,
+feedback:"Bonne réponse : la fouée fait partie des spécialités salées citées."
+},
+
+{
+step:4,
+category:"ÉTAPE 04 · PAUSE SALÉE",
+title:"Que devez-vous résoudre ?",
+text:"La dégustation est précédée d’une petite énigme.",
+answers:[
+"Une anecdote historique ou culinaire",
+"Un problème de mathématiques",
+"Une énigme sportive",
+"Une devinette musicale"
+],
+correct:0,
+feedback:"Exact. Cette étape associe une découverte historique ou culinaire à la dégustation."
+},
+
+{
+step:5,
+category:"ÉTAPE 05 · L’INDICE MYSTÈRE",
+title:"Que devez-vous obtenir pour poursuivre ?",
+text:"Chaque étape doit vous rapprocher de la suivante.",
+answers:[
+"Un mot ou un indice",
+"Une carte bancaire",
+"Un ticket",
+"Une photographie obligatoire"
+],
+correct:0,
+feedback:"Exact. Les étapes permettent de trouver des indices pour débloquer la suite."
+},
+
+{
+step:5,
+category:"ÉTAPE 05 · L’INDICE MYSTÈRE",
+title:"Que faut-il privilégier pour résoudre une énigme ?",
+text:"Les meilleures équipes savent prendre leur temps.",
+answers:[
+"La précipitation",
+"L’observation et la discussion",
+"Le hasard",
+"La réponse du premier joueur"
+],
+correct:1,
+feedback:"Bonne réponse. Observez, échangez et confrontez vos idées."
+},
+
+{
+step:6,
+category:"ÉTAPE 06 · DOUCEUR FINALE",
+title:"Quel type de dégustation termine le parcours ?",
+text:"La dernière bouchée doit encore vous réserver une surprise.",
+answers:[
+"Une douceur sucrée",
+"Une entrée salée",
+"Un fromage",
+"Une soupe"
+],
+correct:0,
+feedback:"Exact. Le parcours se termine par une douceur sucrée."
+},
+
+{
+step:6,
+category:"ÉTAPE 06 · DOUCEUR FINALE",
+title:"Quelle douceur locale peut être proposée ?",
+text:"Une spécialité angevine emblématique peut apparaître dans cette dernière énigme.",
+answers:[
+"Le quernon d’ardoise",
+"Le kouign-amann",
+"Le canelé",
+"La madeleine"
+],
+correct:0,
+feedback:"Bonne réponse : le quernon d’ardoise fait partie des douceurs locales citées."
+},
+
+{
+step:6,
+category:"ÉTAPE 06 · DOUCEUR FINALE",
+title:"Quel est le dernier défi ?",
+text:"Votre score est calculé. Mais l’aventure réserve également une dernière récompense symbolique.",
+answers:[
+"Trouver le mot-mystère final",
+"Recommencer depuis le début",
+"Quitter sans connaître son score",
+"Supprimer ses réponses"
+],
+correct:0,
+feedback:"Bravo ! Vous avez terminé les 15 questions et les six étapes des Saveurs Mystérieuses."
+}
+
+];
+
+
+var gameCurrent = 0;
+var gameScore = 0;
+var gameAnswered = false;
+
+
+/* ==========================================================
+   NAVIGATION
+   ========================================================== */
+
+function openPage(name){
+
+var pages =
+document.querySelectorAll("#dha-app .dha-page");
+
+for(var i=0;i<pages.length;i++){
+
+pages[i].classList.remove("active");
+
+}
+
+var target =
+document.getElementById("dha-"+name);
+
+if(target){
+
+target.classList.add("active");
+
+}
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* ==========================================================
+   AFFICHER UNE QUESTION
+   ========================================================== */
+
+function showGameQuestion(){
+
+var q = gameQuestions[gameCurrent];
+
+if(!q){
+
+finishGame();
+return;
+
+}
+
+gameAnswered=false;
+
+document.getElementById("dha-game-step").textContent =
+String(q.step).padStart(2,"0");
+
+document.getElementById("dha-game-progress").textContent =
+String(gameCurrent+1).padStart(2,"0")+"/15";
+
+document.getElementById("dha-game-category").textContent =
+q.category;
+
+document.getElementById("dha-game-title").textContent =
+q.title;
+
+document.getElementById("dha-game-text").textContent =
+q.text;
+
+
+var answers =
+document.getElementById("dha-game-answers");
+
+answers.innerHTML="";
+
+
+var feedback =
+document.getElementById("dha-game-feedback");
+
+feedback.style.display="none";
+feedback.innerHTML="";
+
+
+var next =
+document.getElementById("dha-game-next");
+
+next.style.display="none";
+
+
+for(var i=0;i<q.answers.length;i++){
+
+var button =
+document.createElement("button");
+
+button.className="dha-answer";
+
+button.textContent=q.answers[i];
+
+button.onclick =
+(function(index){
+
+return function(){
+
+answerGameQuestion(index);
+
+};
+
+})(i);
+
+answers.appendChild(button);
+
+}
+
+}
+
+
+/* ==========================================================
+   RÉPONDRE
+   ========================================================== */
+
+function answerGameQuestion(index){
+
+if(gameAnswered){
+return;
+}
+
+gameAnswered=true;
+
+var q=gameQuestions[gameCurrent];
+
+var buttons =
+document.querySelectorAll(
+"#dha-game-answers .dha-answer"
+);
+
+for(var i=0;i<buttons.length;i++){
+buttons[i].disabled=true;
+}
+
+
+var feedback =
+document.getElementById("dha-game-feedback");
+
+
+if(index===q.correct){
+
+gameScore++;
+
+buttons[index].style.background="#111";
+buttons[index].style.color="#fff";
+buttons[index].style.borderColor="#111";
+
+feedback.innerHTML =
+"<strong>✓ BONNE RÉPONSE</strong><br><br>"
++q.feedback;
+
+}else{
+
+buttons[index].style.background="#f3f3f3";
+buttons[index].style.borderColor="#999";
+
+buttons[q.correct].style.borderColor="#111";
+
+feedback.innerHTML =
+"<strong>INDICE</strong><br><br>"
++q.feedback;
+
+}
+
+
+feedback.style.display="block";
+
+
+var next =
+document.getElementById("dha-game-next");
+
+next.style.display="flex";
+
+
+if(gameCurrent===gameQuestions.length-1){
+
+next.querySelector("span").textContent =
+"VOIR MON SCORE →";
+
+}else{
+
+next.querySelector("span").textContent =
+"CONTINUER →";
+
+}
+
+}
+
+
+/* ==========================================================
+   QUESTION SUIVANTE
+   ========================================================== */
+
+function nextGameQuestion(){
+
+gameCurrent++;
+
+if(gameCurrent>=gameQuestions.length){
+
+finishGame();
+return;
+
+}
+
+showGameQuestion();
+
+}
+
+
+/* ==========================================================
+   FIN
+   ========================================================== */
+
+function finishGame(){
+
+document.getElementById("dha-final-score").textContent =
+gameScore+"/15";
+
+openPage("game-finish");
+
+}
+
+
+/* ==========================================================
+   API DHA
+   ========================================================== */
+
+window.DHA={
+
+open:function(name){
+openPage(name);
+},
+
+startGame:function(){
+
+gameCurrent=0;
+gameScore=0;
+gameAnswered=false;
+
+openPage("question");
+
+showGameQuestion();
+
+},
+
+nextGameQuestion:function(){
+nextGameQuestion();
+},
+
+nextQuestion:function(){
+nextGameQuestion();
+},
+
+openSaveursMap:function(){
+
+window.open(
+"https://www.google.com/maps/search/?api=1&query=Place%20du%20Ralliement%2C%20Angers",
+"_blank"
+);
+
+}
+
+};
+
+})();
+
+
+/* ==========================================================
+   SERVICE WORKER
+   ========================================================== */
+
+if("serviceWorker" in navigator){
+
+window.addEventListener("load",function(){
+
+navigator.serviceWorker.register("./sw.js")
+.then(function(){
+
+console.log("DHA PWA : service worker actif.");
+
+})
+.catch(function(error){
+
+console.log("Service Worker :",error);
+
+});
+
+});
+
+}
+
+
+/* ==========================================================
+   INSTALLATION PWA
+   ========================================================== */
+
+var deferredPrompt = null;
+
+var installButton =
+document.getElementById("dha-install");
+
+
+window.addEventListener(
+"beforeinstallprompt",
+function(event){
+
+event.preventDefault();
+
+deferredPrompt=event;
+
+installButton.style.display="block";
+
+});
+
+
+installButton.addEventListener(
+"click",
+async function(){
+
+if(!deferredPrompt){
+return;
+}
+
+deferredPrompt.prompt();
+
+var choice =
+await deferredPrompt.userChoice;
+
+deferredPrompt=null;
+
+installButton.style.display="none";
+
+});
+
+
+window.addEventListener(
+"appinstalled",
+function(){
+
+installButton.style.display="none";
+
+console.log(
+"Des Histoires & Des Arts est installée."
+);
+
+});
+
+</script>
+
+</body>
+</html>
